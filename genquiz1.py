@@ -13,4 +13,3 @@ mons = {"Staraptor":"Gen 4",
 mons1 = list(mons.items())
 randommon = random.choice(mons1)
 print(randommon)
-a
