@@ -1,4 +1,18 @@
 import random
+import tkinter as tk 
+
+# GUI 
+window =tk.Tk()
+window.geometry("600x600")
+window.configure(bg="black")
+window.title("Gen Quiz")
+
+#Entry Field
+#pokename = tk.StringVar()
+entry = tk.Entry(window)
+entry.pack()
+
+window.mainloop()
 
 class pokemon():
     def __init__(self, name, gen):
