@@ -9,19 +9,16 @@ class pokemon():
     
     def __str__(self):
         return self.name + " is from Gen " + self.gen
-# This dict can prob be removed
+#Dictionary for Pokemon and corresponding image and generations
 mons = {"Staraptor":("Projects/staraptor.png", "Gen 4"),
-"Hoopa":("Project/hoopa.png", "Gen 6")}
-#modify these to pull from the below dictionary
-mons1 = list(mons.items())
-randommon = random.choice(mons1)
-monim = random.choice(list(mons.keys(0)))
-print(randommon)
-#this dict should be the one with gen and image path
+"Regirock":("Projects/regirock.jpg", "Gen 3")}
 
-def get_image():
-    selection=mons.get(monim)
-    return selection
+#Choosing a random mon from a list generated from the keys in our dictionary
+monchoice = random.choice(list(mons.keys()))
+#Choosing the monchoice value that corresponds with the randomly chosen key in the mons dictionary (in this case the value is a list), then chooses the respective value in the list
+monim=mons[monchoice][0]
+mongen=mons[monchoice][1]
+
 
 # GUI 
 window =tk.Tk()
@@ -30,7 +27,7 @@ window.configure(bg="black")
 window.title("Gen Quiz")
 
 #Image
-starap = Image.open(get_image())
+starap = Image.open(monim)
 tkstarap = ImageTk.PhotoImage(starap)
 imglabel = tk.Label(window, image=tkstarap)
 imglabel.pack()
@@ -42,6 +39,10 @@ entry.pack()
 # Get the user input
 def userInput():
     inp = entry.get()
+    if inp==mongen:
+        print('Correct')
+    else:
+        print('fail')
     return(inp)
 
 getInput =tk.Button(window, text="Submit", command=userInput)
