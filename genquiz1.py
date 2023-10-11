@@ -2,14 +2,6 @@ import random
 import tkinter as tk
 from PIL import Image, ImageTk
 
-class pokemon():
-    def __init__(self, name, gen):
-        self.name = name
-        self.gen = gen
-    
-    def __str__(self):
-        return self.name + " is from Gen " + self.gen
-
 #Dictionary for Pokemon and corresponding image and generations
 mons = {"Staraptor":("Projects/staraptor.png", "Gen 4"),
 "Regirock":("Projects/regirock.jpg", "Gen 3")}
@@ -34,9 +26,9 @@ window.title("Gen Quiz")
 correct=0
 
 def packImg(img1):
-    global monim
+    global tkppic
     #Image
-    ppic = Image.open(monim)
+    ppic = Image.open(img1)
     ppic=ppic.resize((400,400))
     tkppic = ImageTk.PhotoImage(ppic)
     imglabel = tk.Label(window, image=tkppic)
@@ -57,19 +49,6 @@ def userInput():
         print(correct)
     else:
         print('Fail')
-
-
-'''def runGame():
-    #GUI
-    global window
-    window=tk.Tk()
-    window.geometry("650x650")
-    window.configure(bg="black")
-    window.title("Gen Quiz")
-    #for i in range(0):
-    monGrabs()
-    packImg(monim)
-    userInput()'''
 
 getInput =tk.Button(window, text="Submit", command=userInput)
 getInput.pack() 
