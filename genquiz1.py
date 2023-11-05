@@ -15,6 +15,13 @@ def monGrabs():
     monim=mons[monchoice][0]
     mongen=mons[monchoice][1]
     return monchoice,monim,mongen
+
+def updateQuiz():
+    monGrabs()
+    imglabel.destroy()
+    packImg(monim)
+    entry.delete(0, 'end')
+
 monGrabs()
 
 #GUI
@@ -22,17 +29,20 @@ window=tk.Tk()
 window.geometry("650x650")
 window.configure(bg="black")
 window.title("Gen Quiz")
+
 #number correct
 correct=0
 
 def packImg(img1):
-    global tkppic
+    global tkppic, imglabel
     #Image
     ppic = Image.open(img1)
     ppic=ppic.resize((400,400))
     tkppic = ImageTk.PhotoImage(ppic)
     imglabel = tk.Label(window, image=tkppic)
+    imglabel.image = tkppic
     imglabel.pack()
+
 packImg(monim)
 
 #Entry Field
@@ -49,6 +59,7 @@ def userInput():
         print(correct)
     else:
         print('Fail')
+    updateQuiz()
 
 getInput =tk.Button(window, text="Submit", command=userInput)
 getInput.pack() 
